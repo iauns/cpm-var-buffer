@@ -2,6 +2,7 @@
 #define IAUNS_VARBUFFER_HPP
 
 #include <cstdint>
+#include <memory>
 #include <bserialize/BSerialize.hpp>
 
 namespace CPM_VAR_BUFFER_NS {
