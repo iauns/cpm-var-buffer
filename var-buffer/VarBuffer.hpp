@@ -17,9 +17,8 @@ public:
   /// Initialize an empty buffer.
   VarBuffer();
 
-  /// Initialize with pre-existing buffer. The buffers contents will be
-  /// copied into a temporary buffer. Does not take ownership of 'buffer'.
-  VarBuffer(char* buffer, int bufferSize);
+  // Preallocate the variable buffer to the preset size.
+  VarBuffer(uint32_t size);
 
   virtual ~VarBuffer();
   
@@ -44,8 +43,10 @@ public:
 
   void clear();
 
-  char* getBuffer()   {return mBuffer;}
-  int getBufferSize() {return mSerializer->getOffset();}
+  char* getBuffer()         {return mBuffer;}
+  int getBufferSize() const {return mSerializer->getOffset();}
+
+  int getAllocatedSize() const {return mBufferSize;}
 
 private:
 

@@ -17,6 +17,17 @@ VarBuffer::VarBuffer() :
       new CPM_BSERIALIZE_NS::BSerialize(mBuffer, mBufferSize));
 }
 
+VarBuffer::VarBuffer(uint32_t size) :
+    mBuffer(nullptr),
+    mBufferSize(0)
+{
+  mBuffer = static_cast<char*>(std::malloc(size));
+  mBufferSize = size;
+
+  mSerializer = std::unique_ptr<CPM_BSERIALIZE_NS::BSerialize>(
+      new CPM_BSERIALIZE_NS::BSerialize(mBuffer, mBufferSize));
+}
+
 VarBuffer::~VarBuffer()
 {
   std::free(mBuffer);
