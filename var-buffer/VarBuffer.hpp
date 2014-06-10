@@ -41,11 +41,17 @@ public:
     }
   }
 
+  /// Clears all data currently written to the var buffer.
   void clear();
 
+  /// Retrieves raw buffer contents.
   char* getBuffer()         {return mBuffer;}
+
+  /// Retrieves the current size of the buffer (size of all data currently
+  /// written to the buffer).
   int getBufferSize() const {return mSerializer->getOffset();}
 
+  /// Retrieves currently allocated size of the buffer.
   int getAllocatedSize() const {return mBufferSize;}
 
 private:
